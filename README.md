@@ -9,13 +9,17 @@ Depbot is a deployment tool to help deploying files from GIT to your server.
 3. Run `npm run compile`
 4. Run server `npm start`
 
-## Comands
+## Commands
 
 |`npm run <script>`|Description|
 |------------------|-----------|
 |`start`|Serves your app at `localhost:PORT`.|
 |`compile`|Compiles the application to /client/public.|
 |`dev`|Webpack watches front-end files and nodemon will run server.|
+
+## Questions and issues
+
+Use the Github issue tracker for any questions, issues or feature suggestions.
 
 ## Roadmap
  
