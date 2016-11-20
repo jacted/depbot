@@ -5,3 +5,4 @@ gitdata
 client/public/*.js
 client/public/*.css
 client/public/*.map
+db.json

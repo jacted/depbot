@@ -1,7 +1,7 @@
 const DeployerJS = require('deployer-js')
 const config = require('../config')
 
-module.exports = (server) => {
+module.exports = (server, db) => {
 
   server.post('/git/webhook', (req, res) => {
     if (!req.isXHub || !req.isXHubValid()) {
@@ -9,7 +9,7 @@ module.exports = (server) => {
     } else {
 
       // Get project
-      let project = config.projects[req.body.repository.name]
+      let project = db.get('projects').find({ reponame: req.body.repository.name }).value()
       if (typeof project === 'undefined') {
         res.status(500).end('Project does not exist.')
         return false
