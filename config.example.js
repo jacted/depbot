@@ -2,7 +2,7 @@ let config = {
   port: 1337,
   webhookSecret: '1234',
   projects: {
-    'static-site':  {
+    'REPO-NAME':  {
       name: 'Test 1',
       ftp: {
         host: '',
