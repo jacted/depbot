@@ -3,7 +3,7 @@ const config = require('../config')
 
 module.exports = (server) => {
 
-  // API for front-end
+  // API to get all projects
   server.get('/api/projects', (req, res) => {
     let projects = []
     for (let val in config.projects) {
@@ -15,6 +15,7 @@ module.exports = (server) => {
     res.json(projects)
   })
 
+  // Api to get single project
   server.get('/api/projects/:projectID', (req, res) => {
     let project = config.projects[req.params.projectID]
     if (typeof project === 'undefined') {
@@ -28,48 +29,6 @@ module.exports = (server) => {
       git: project.git,
       ftp: project.ftp
     })
-  })
-
-  // Git webhook
-  server.post('/git/webhook', (req, res) => {
-    if (!req.isXHub || !req.isXHubValid()) {
-      res.status(401).end('Wrong signature.')
-    } else {
-
-      // Get project
-      let project = config.projects[req.body.repository.name]
-      if (typeof project === 'undefined') {
-        res.status(500).end('Project does not exist.')
-        return false
-      }
-
-      if (req.body.ref === 'refs/heads/' + project.git.branch) {
-      
-        try {
-
-          let deployer = new DeployerJS({
-            ftp: project.ftp,
-            git: project.git
-          })
-
-          deployer.deployCommitedFiles(req.body.commits).then((res) => {
-            console.log(res)
-          }, (err) => {
-            console.log(err)
-          })
-
-          res.end('OK - Deploying')
-
-        } catch (e) {
-          console.log(e)
-          res.status(500).end('Error')
-        }
-        
-      } else {
-        res.end('OK - Not deploying')
-      }
-
-    }
   })
 
 }

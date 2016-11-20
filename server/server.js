@@ -10,6 +10,7 @@ server.use(xhub({ algorithm: 'sha1', secret: config.webhookSecret }))
 server.use(bodyParser.json())
 
 // API
+require('./git')(server)
 require('./api')(server)
 
 // Serve client
