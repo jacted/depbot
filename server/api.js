@@ -25,7 +25,8 @@ module.exports = (server) => {
     res.json({
       id: req.params.projectID,
       name: project.name,
-      git: project.git
+      git: project.git,
+      ftp: project.ftp
     })
   })
 

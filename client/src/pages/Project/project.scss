@@ -1,16 +1,21 @@
 .project__screen {
   .box {
     width: 500px;
+    h2 {
+      margin-bottom: 15px;
+    }
     ul {
       li {
+        text-align: right;
         margin-bottom: 10px;
         &:last-child {
           margin-bottom: 0px;
         }
         span {
           display: inline-block;
-          width: 60px;
           font-weight: bold;
+          float: left;
+          text-align: left;
         }
       }
     }

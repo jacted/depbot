@@ -30,10 +30,29 @@ class Project extends Component {
     return (
       <div className='box'>
         <div className='box--content'>
+          <h2>General</h2>
           <ul>
             <li><span>ID:</span> {project.id}</li>
             <li><span>Name:</span> {project.name}</li>
             <li><span>Git repo:</span> {project.git.repo}</li>
+            <li><span>Git branch:</span> {project.git.branch || 'master'}</li>
+          </ul>
+        </div>
+      </div>
+    )
+  }
+
+  renderProjectInformationFtp () {
+    let { project } = this.state
+    return (
+      <div className='box'>
+        <div className='box--content'>
+          <h2>FTP</h2>
+          <ul>
+            <li><span>Host:</span> {project.ftp.host}:{project.ftp.port}</li>
+            <li><span>Username:</span> {project.ftp.username}</li>
+            <li><span>Path:</span> {project.ftp.path}</li>
+            <li><span>Continue on error:</span> {project.ftp.continueOnError ? 'Yes' : 'No'}</li>
           </ul>
         </div>
       </div>
@@ -52,6 +71,7 @@ class Project extends Component {
         </div>
         <div id='content'>
           {this.renderProjectInformation()}
+          {this.renderProjectInformationFtp()}
         </div>
       </div>
     )
