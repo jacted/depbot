@@ -10,6 +10,8 @@ Depbot is a deployment tool to help deploying files from GIT to your server.
 4. Run `npm run compile`
 5. Run server `npm start`
 
+**Webhook content-type has to be application/json**
+
 ## Commands
 
 |`npm run <script>`|Description|
@@ -32,6 +34,7 @@ Use the Github issue tracker for any questions, issues or feature suggestions.
 - [ ] Deployment via SSH
 - [ ] Slack integration
 - [ ] Refactoring
+- [ ] Gitlab support
 
 ## Warning
 
