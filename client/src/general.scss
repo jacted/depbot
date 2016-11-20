@@ -80,6 +80,11 @@ a {
     background: #5db8f1;
     border-radius: 4px;
     color: #fff;
+    border: 1px solid #5db8f1;
+    &:hover {
+      background: #fff;
+      color: #5db8f1;
+    }
   }
 }
 
