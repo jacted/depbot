@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node server/server.js",
+    "compile": "cross-env NODE_ENV=production webpack",
     "dev": "npm-run-all --parallel server:dev client:dev",
     "server:dev": "nodemon server/server.js --ignore client",
     "client:dev": "webpack -d --watch"
@@ -21,6 +22,7 @@
   "homepage": "https://github.com/jacted/depbot#readme",
   "dependencies": {
     "body-parser": "^1.15.2",
+    "cross-env": "^3.1.3",
     "deployer-js": "0.0.5",
     "express": "^4.14.0",
     "express-x-hub": "^1.0.4",

@@ -4,3 +4,4 @@ config.js
 gitdata
 client/public/*.js
 client/public/*.css
+client/public/*.map
