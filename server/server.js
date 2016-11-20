@@ -9,13 +9,13 @@ const config = require('../config')
 server.use(xhub({ algorithm: 'sha1', secret: config.webhookSecret }))
 server.use(bodyParser.json())
 
-// Serve client
-server.use(express.static(path.join(__dirname, '../client/public')))
-server.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '../client/public/index.html'));
-})
-
 // API
 require('./api')(server)
+
+// Serve client
+server.use(express.static(path.join(__dirname, '../client/public')))
+server.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/public/index.html'));
+})
 
 server.listen(config.port, function () {})

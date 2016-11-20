@@ -82,3 +82,41 @@ a {
     color: #fff;
   }
 }
+
+/* Content
+****************************************/
+#content {
+  padding: 20px;
+}
+
+/* Box
+****************************************/
+.box {
+  margin-right: 20px;
+  float: left;
+  border-bottom: 2px solid #ddd;
+  background: #fff;
+  border-radius: 4px;
+  .box--content {
+    padding: 15px;
+    span.box--content-type {
+      display: block;
+      font-size: 12px;
+      font-weight: 300;
+      margin-bottom: 10px;
+    }
+    h2 {
+      font-size: 16px;
+      font-weight: 500;
+    }
+  }
+  .box--footer {
+    padding: 15px;
+    background: #fafbfd;
+    color: #aba5a5;
+    border-top: 1px solid #eef2f5;
+    a {
+      color: #aba5a5;
+    }
+  }
+}

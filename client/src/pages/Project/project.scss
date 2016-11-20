@@ -1,0 +1,18 @@
+.project__screen {
+  .box {
+    width: 500px;
+    ul {
+      li {
+        margin-bottom: 10px;
+        &:last-child {
+          margin-bottom: 0px;
+        }
+        span {
+          display: inline-block;
+          width: 60px;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}

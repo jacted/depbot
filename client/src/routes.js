@@ -20,7 +20,7 @@ export default {
       }
     },
     {
-      path: '/project',
+      path: '/project/:projectID',
       getComponent(location, cb) {
         System.import('./pages/Project')
           .then(loadRoute(cb))
