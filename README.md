@@ -5,9 +5,10 @@ Depbot is a deployment tool to help deploying files from GIT to your server.
 ## Installation
 
 1. Git clone project
-2. Edit `config.example.js` and change name to `config.js`
-3. Run `npm run compile`
-4. Run server `npm start`
+2. Add github push webhook to your repo (Remember to add a secret)
+3. Edit `config.example.js` and change name to `config.js`
+4. Run `npm run compile`
+5. Run server `npm start`
 
 ## Commands
 
