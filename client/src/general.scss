@@ -1,5 +1,6 @@
 @charset "UTF-8";
 @import 'reset';
+@import 'colors';
 
 html {
   box-sizing: border-box;
@@ -32,13 +33,13 @@ a {
 /* Header
 ****************************************/
 #header {
-    background: #344563;
+    background: $primary-color;
     color: #fff;
     h1 {
       float: left;
       padding: 0px 20px;
       font-size: 20px;
-      background: #5db8f1;
+      background: $secondary-color;
       line-height: 70px;
     }
     ul {
@@ -54,7 +55,7 @@ a {
           font-weight: 300;
           &.active,
           &:hover {
-            border-bottom: 1px solid #5db8f1;
+            border-bottom: 1px solid $secondary-color;
           }
         }
       }
@@ -77,13 +78,13 @@ a {
     float: right;
     display: block;
     padding: 0px 20px;
-    background: #5db8f1;
+    background: $secondary-color;
     border-radius: 4px;
     color: #fff;
-    border: 1px solid #5db8f1;
+    border: 1px solid $secondary-color;
     &:hover {
       background: #fff;
-      color: #5db8f1;
+      color: $secondary-color;
     }
   }
 }

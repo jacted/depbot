@@ -1,3 +1,5 @@
+@import '../../colors';
+
 .projectcreate__screen {
   .box {
     width: 500px;
@@ -20,14 +22,14 @@
         cursor: pointer;
         outline: none;
         width: 100%;
-        background: #344563;
+        background: $secondary-color;
         color: #fff;
         padding: 10px;
-        border: 1px solid #344563;
+        border: 1px solid $secondary-color;
         font-size: 14px;
         &:hover {
           background: #fff;
-          color: #344563;
+          color: $secondary-color;
         }
       }
     }
