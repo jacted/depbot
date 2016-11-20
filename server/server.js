@@ -2,6 +2,7 @@ const path = require('path')
 const express = require('express')
 const server = express()
 const bodyParser = require('body-parser')
+const expressValidator = require('express-validator')
 const xhub = require('express-x-hub')
 const config = require('../config')
 const low = require('lowdb')
@@ -18,6 +19,7 @@ if (!db.has('projects').value()) {
 // Github secret + bodyparser
 server.use(xhub({ algorithm: 'sha1', secret: config.webhookSecret }))
 server.use(bodyParser.json())
+server.use(expressValidator())
 
 // API
 require('./git')(server, db)

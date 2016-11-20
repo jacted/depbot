@@ -1,4 +1,3 @@
-const DeployerJS = require('deployer-js')
 const config = require('../config')
 
 module.exports = (server, db) => {
@@ -25,7 +24,7 @@ module.exports = (server, db) => {
       })
     }
     // Remove password from the object
-    delete project.ftp.password
+    project.ftp.password = ''
     // Response
     res.json({
       id: req.params.projectID,
@@ -39,20 +38,42 @@ module.exports = (server, db) => {
   server.post('/api/projects', (req, res) => {
     // Validate input
 
-    // Find repo name
-    let reponame = 'static-site'
+    req.checkBody('name', 'Invalid name').notEmpty()
+    req.checkBody('git[repo]', 'Invalid git repo').notEmpty()
 
-    // Insert project
-    const projectID = db.get('projects').insert({ 
-      name: req.body.name,
-      git: req.body.git,
-      ftp: req.body.ftp,
-      reponame: reponame
-    }).value().id
+    req.checkBody('ftp[host]', 'Invalid ftp host').notEmpty()
+    req.checkBody('ftp[username]', 'Invalid ftp username').notEmpty()
+    req.checkBody('ftp[password]', 'Invalid ftp password').notEmpty()
+    req.checkBody('ftp[path]', 'Invalid ftp path').notEmpty()
 
-    res.json({
-      id: projectID
+    req.asyncValidationErrors().then(() => {
+
+      // Validate FTP connection
+
+      // Find repo name
+      let re = /([^\/]+)\.git$/
+      let foundReponame = req.body.git.repo.match(re)
+
+      // Return 500 on reponame not found
+      if (foundReponame === null) {
+        return res.status(500).end('Repo name not found')
+      }
+
+      // Insert project
+      const projectID = db.get('projects').insert({ 
+        name: req.body.name,
+        git: req.body.git,
+        ftp: req.body.ftp,
+        reponame: foundReponame[1]
+      }).value().id
+
+      res.json({
+        id: projectID
+      })
+    }, (errors) => {
+      res.send(errors)
     })
+
   })
 
 }
