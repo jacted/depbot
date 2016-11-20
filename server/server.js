@@ -18,12 +18,16 @@ server.get('/', (req, res) => {
 
 // API
 server.post('/git/webhook', (req, res) => {
-
-  if(!req.isXHub || !req.isXHubValid()){
+  if (!req.isXHub || !req.isXHubValid()) {
     res.status(401).end('Wrong signature.')
   } else {
 
-    let project = config.projects[0]
+    // Get project
+    let project = config.projects[req.body.repository.full_name]
+    if (typeof project === 'undefined') {
+      res.status(500).end('Project does not exist.')
+      return false
+    }
 
     if (req.body.ref === 'refs/heads/' + project.git.branch) {
     
@@ -34,18 +38,17 @@ server.post('/git/webhook', (req, res) => {
           git: project.git
         })
 
-        /*
-        deployer.deployAllFiles().then((res) => {
-          console.log(res) 
+        deployer.deployCommitedFiles(req.body.commits).then((res) => {
+          console.log(res)
         }, (err) => {
           console.log(err)
         })
-        */
 
         res.end('OK - Deploying')
 
       } catch (e) {
-        res.status(500).end(e)
+        console.log(e)
+        res.status(500).end('Error')
       }
       
     } else {
@@ -53,7 +56,6 @@ server.post('/git/webhook', (req, res) => {
     }
 
   }
-
 })
 
 server.listen(config.port, function () {})

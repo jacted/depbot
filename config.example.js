@@ -1,8 +1,8 @@
 let config = {
   port: 1337,
   webhookSecret: '1234',
-  projects: [
-    {
+  projects: {
+    'jacted/static-site':  {
       name: 'Test 1',
       ftp: {
         host: '',
@@ -17,7 +17,7 @@ let config = {
         branch: ''
       }
     }
-  ]
+  }
 }
 
 module.exports = config
