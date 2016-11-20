@@ -23,7 +23,7 @@ server.post('/git/webhook', (req, res) => {
   } else {
 
     // Get project
-    let project = config.projects[req.body.repository.full_name]
+    let project = config.projects[req.body.repository.name]
     if (typeof project === 'undefined') {
       res.status(500).end('Project does not exist.')
       return false

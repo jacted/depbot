@@ -2,7 +2,7 @@ let config = {
   port: 1337,
   webhookSecret: '1234',
   projects: {
-    'jacted/static-site':  {
+    'static-site':  {
       name: 'Test 1',
       ftp: {
         host: '',
