@@ -120,3 +120,19 @@ a {
     }
   }
 }
+
+/* Box
+****************************************/
+.alert {
+  display: block;
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  line-height: 1.5;
+  &.errors {
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+  }
+}

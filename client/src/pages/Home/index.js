@@ -46,7 +46,7 @@ class Home extends Component {
       <div className='projects__screen'>
         <div id='subheader' className='clearfix'>
           <h1>Projects</h1>
-          <a href='#'>Create project</a>
+          <Link to='/projects/create'>Create project</Link>
         </div>
         <div id='content'>
           {this.state.projects.map(this.renderProject)}

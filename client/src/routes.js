@@ -26,6 +26,14 @@ export default {
           .then(loadRoute(cb))
           .catch(errorLoading)
       }
+    },
+    {
+      path: '/projects/create',
+      getComponent(location, cb) {
+        System.import('./pages/ProjectCreate')
+          .then(loadRoute(cb))
+          .catch(errorLoading)
+      }
     }
   ]
 };

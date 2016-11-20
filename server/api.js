@@ -37,7 +37,6 @@ module.exports = (server, db) => {
   // Api to add project
   server.post('/api/projects', (req, res) => {
     // Validate input
-
     req.checkBody('name', 'Invalid name').notEmpty()
     req.checkBody('git[repo]', 'Invalid git repo').notEmpty()
 
@@ -56,7 +55,13 @@ module.exports = (server, db) => {
 
       // Return 500 on reponame not found
       if (foundReponame === null) {
-        return res.status(500).end('Repo name not found')
+        return res.status(400).json({
+          errors: [
+            {
+              msg: 'Repository name not found.'
+            }
+          ]
+        })
       }
 
       // Insert project
@@ -71,9 +76,10 @@ module.exports = (server, db) => {
         id: projectID
       })
     }, (errors) => {
-      res.send(errors)
+      res.status(400).json({
+        errors: errors
+      })
     })
-
   })
 
 }

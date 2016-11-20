@@ -1,0 +1,35 @@
+.projectcreate__screen {
+  .box {
+    width: 500px;
+    h2 {
+      margin-bottom: 15px;
+    }
+    .form-group {
+      margin-top: 10px;
+      label {
+        display: block;
+        margin-bottom: 10px;
+      }
+      input {
+        width: 100%;
+        outline: none;
+        padding: 6px;
+        font-size: 14px;
+      }
+      button {
+        cursor: pointer;
+        outline: none;
+        width: 100%;
+        background: #344563;
+        color: #fff;
+        padding: 10px;
+        border: 1px solid #344563;
+        font-size: 14px;
+        &:hover {
+          background: #fff;
+          color: #344563;
+        }
+      }
+    }
+  }
+}
