@@ -36,6 +36,16 @@ Use the Github issue tracker for any questions, issues or feature suggestions.
 
 This project is under development. Things might break or change.
 
+## Contributing
+
+1. Create an issue and describe your idea
+2. [Fork it](https://github.com/jacted/depbot/fork)
+3. Create your feature branch (`git checkout -b my-new-feature`)
+4. Commit your changes (`git commit -am 'Add some feature'`)
+5. Publish the branch (`git push origin my-new-feature`)
+6. Create a new Pull Request
+7. Profit! :white_check_mark:
+
 ## License
 >You can check out the full license [here](https://github.com/jacted/depbot/blob/master/LICENSE)
 
