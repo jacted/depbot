@@ -1,4 +1,4 @@
-const DeployerJS = require('deployer-js')
+const { DeployerJS } = require('deployer-js')
 const config = require('../config')
 
 module.exports = (server, db) => {
