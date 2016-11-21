@@ -1,3 +1,4 @@
+const { validateFTP } = require('deployer-js')
 const config = require('../config')
 
 module.exports = (server, db) => {
@@ -57,32 +58,44 @@ module.exports = (server, db) => {
     req.asyncValidationErrors().then(() => {
 
       // Validate FTP connection
+      validateFTP(req.body.ftp).then(() => {
 
-      // Find repo name
-      let re = /([^\/]+)\.git$/
-      let foundReponame = req.body.git.repo.match(re)
+        // Find repo name
+        let re = /([^\/]+)\.git$/
+        let foundReponame = req.body.git.repo.match(re)
 
-      // Return 500 on reponame not found
-      if (foundReponame === null) {
+        // Return 500 on reponame not found
+        if (foundReponame === null) {
+          return res.status(400).json({
+            errors: [
+              {
+                msg: 'Repository name not found.'
+              }
+            ]
+          })
+        }
+
+        // Save project
+        project.name = req.body.name
+        project.git = req.body.git
+        project.ftp = req.body.ftp
+        project.reponame = foundReponame[1]
+
+        // Response
+        res.json({
+          errors: []
+        })
+
+      }, () => {
         return res.status(400).json({
           errors: [
             {
-              msg: 'Repository name not found.'
+              msg: 'Could not connect to FTP.'
             }
           ]
         })
-      }
-
-      // Save project
-      project.name = req.body.name
-      project.git = req.body.git
-      project.ftp = req.body.ftp
-      project.reponame = foundReponame[1]
-
-      // Response
-      res.json({
-        errors: []
       })
+
     }, (errors) => {
       res.status(400).json({
         errors: errors
@@ -113,33 +126,45 @@ module.exports = (server, db) => {
     req.asyncValidationErrors().then(() => {
 
       // Validate FTP connection
+      validateFTP(req.body.ftp).then((res) => {
 
-      // Find repo name
-      let re = /([^\/]+)\.git$/
-      let foundReponame = req.body.git.repo.match(re)
+        // Find repo name
+        let re = /([^\/]+)\.git$/
+        let foundReponame = req.body.git.repo.match(re)
 
-      // Return 500 on reponame not found
-      if (foundReponame === null) {
+        // Return 500 on reponame not found
+        if (foundReponame === null) {
+          return res.status(400).json({
+            errors: [
+              {
+                msg: 'Repository name not found.'
+              }
+            ]
+          })
+        }
+
+        // Insert project
+        const projectID = db.get('projects').insert({ 
+          name: req.body.name,
+          git: req.body.git,
+          ftp: req.body.ftp,
+          reponame: foundReponame[1]
+        }).value().id
+
+        res.json({
+          id: projectID
+        })
+
+      }, (err) => {
         return res.status(400).json({
           errors: [
             {
-              msg: 'Repository name not found.'
+              msg: 'Could not connect to FTP.'
             }
           ]
         })
-      }
-
-      // Insert project
-      const projectID = db.get('projects').insert({ 
-        name: req.body.name,
-        git: req.body.git,
-        ftp: req.body.ftp,
-        reponame: foundReponame[1]
-      }).value().id
-
-      res.json({
-        id: projectID
       })
+
     }, (errors) => {
       res.status(400).json({
         errors: errors
