@@ -7,7 +7,7 @@
     "start": "node server/server.js",
     "compile": "cross-env NODE_ENV=production webpack",
     "dev": "npm-run-all --parallel server:dev client:dev",
-    "server:dev": "nodemon server/server.js --ignore client",
+    "server:dev": "nodemon server/server.js --ignore client --ignore db.json",
     "client:dev": "webpack -d --watch"
   },
   "repository": {

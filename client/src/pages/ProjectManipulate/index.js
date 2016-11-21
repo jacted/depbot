@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
-import { createProject } from '../../data/projects'
+import { getProject, createProject, saveProject } from '../../data/projects'
 
-import './projectcreate.scss'
+import './projectemanipulate.scss'
 
-class ProjectCreate extends Component {
+class ProjectManipulate extends Component {
   constructor (props) {
     super(props)
     this.state = {
+      type: '',
       errors: [],
       project: {
         name: '',
@@ -21,23 +22,54 @@ class ProjectCreate extends Component {
           repo: '',
           branch: 'master'
         }
-      }
+      },
+      projectname: ''
     }
-    this.createProject = this.createProject.bind(this)
+    this.manipulateProject = this.manipulateProject.bind(this)
     this.inputChange = this.inputChange.bind(this)
     this.gitInputChange = this.gitInputChange.bind(this)
     this.ftpInputChange = this.ftpInputChange.bind(this)
   }
 
-  createProject (e) {
+  componentDidMount () {
+    if (typeof this.props.params.projectID === 'undefined') {
+      this.setState({ type: 'create' })
+    } else {
+      this.setState({ type: 'edit' })
+      this.getProject(this.props.params.projectID)
+    }
+  }
+
+  getProject (id) {
+    getProject(id, true).then((res) => {
+      this.setState({
+        project: res.data,
+        projectname: res.data.name
+      })
+    }, (err) => {
+      this.props.router.push('/projects')
+    })
+  }
+
+  manipulateProject (e) {
     e.preventDefault()
 
-    this.setState({
-      errors: []
-    })
+    this.setState({ errors: [] })
 
-    createProject(this.state.project).then((res) => {
-      this.props.router.push('/project/' + res.data.id)
+    let manipulateType
+    if (this.state.type === 'edit') {
+      manipulateType = saveProject(this.state.project, this.props.params.projectID)
+    } else {
+      manipulateType = createProject(this.state.project)
+    }
+
+
+    manipulateType.then((res) => {
+      if (this.state.type === 'edit') {
+        this.props.router.push('/project/' + this.props.params.projectID)
+      } else {
+        this.props.router.push('/project/' + res.data.id)
+      }
     }, (err) => {
       if (typeof err.response.data.errors !== 'undefined') {
         this.setState({
@@ -107,7 +139,7 @@ class ProjectCreate extends Component {
             <input type='text' name='branch' value={this.state.project.git.branch} onChange={this.gitInputChange} autoComplete='off' />
           </div>
           <div className='form-group'>
-            <button>Create project</button>
+            <button>{this.state.type === 'edit' ? 'Save' : 'Create'} project</button>
           </div>
         </div>
       </div>
@@ -161,14 +193,22 @@ class ProjectCreate extends Component {
   }
 
   render () {
+    let title = 'Create project'
+    if (this.state.type === 'edit') {
+      if (typeof this.state.project.id === 'undefined') {
+        return null
+      }
+      title = 'Edit: ' + this.state.projectname
+    }
+    
     return (
-      <div className='projectcreate__screen'>
+      <div className='projectmanipulate__screen'>
         <div id='subheader' className='clearfix'>
-          <h1>Create project</h1>
+          <h1>{title}</h1>
         </div>
         <div id='content'>
           {this.renderErrors()}
-          <form onSubmit={this.createProject}>
+          <form onSubmit={this.manipulateProject}>
             {this.renderGeneralSection()}
             {this.renderFtpSection()}
           </form>
@@ -178,4 +218,4 @@ class ProjectCreate extends Component {
   }
 }
 
-export default ProjectCreate
+export default ProjectManipulate

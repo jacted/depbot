@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router'
 import { getProject } from '../../data/projects'
 
 import './project.scss'
@@ -21,7 +22,7 @@ class Project extends Component {
         project: res.data
       })
     }, (err) => {
-      console.log(err)
+      this.props.router.push('/projects')
     })
   }
 
@@ -68,6 +69,7 @@ class Project extends Component {
       <div className='project__screen'>
         <div id='subheader' className='clearfix'>
           <h1>Project: {project.name}</h1>
+          <Link to={'/project/' + project.id + '/edit'}>Edit project</Link>
         </div>
         <div id='content'>
           {this.renderProjectInformation()}

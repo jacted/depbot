@@ -28,9 +28,17 @@ export default {
       }
     },
     {
+      path: '/project/:projectID/edit',
+      getComponent(location, cb) {
+        System.import('./pages/ProjectManipulate')
+          .then(loadRoute(cb))
+          .catch(errorLoading)
+      }
+    },
+    {
       path: '/projects/create',
       getComponent(location, cb) {
-        System.import('./pages/ProjectCreate')
+        System.import('./pages/ProjectManipulate')
           .then(loadRoute(cb))
           .catch(errorLoading)
       }
