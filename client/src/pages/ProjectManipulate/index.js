@@ -47,7 +47,7 @@ class ProjectManipulate extends Component {
         projectname: res.data.name
       })
     }, (err) => {
-      this.props.router.push('/projects')
+      this.props.router.push('/')
     })
   }
 

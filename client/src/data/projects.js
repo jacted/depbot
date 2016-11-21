@@ -17,3 +17,7 @@ export function createProject (data) {
 export function saveProject (data, id) {
   return axios.post(config.API_URL + '/projects/' + id, data)
 }
+
+export function deleteProject (id) {
+  return axios.delete(config.API_URL + '/projects/' + id)
+}

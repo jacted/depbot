@@ -90,6 +90,15 @@ module.exports = (server, db) => {
     })
   })
 
+  // Api to remove project
+  server.delete('/api/projects/:projectID', (req, res) => {
+    db.get('projects').remove({ id: req.params.projectID }).value()
+
+    res.json({
+      errors: []
+    })
+  })
+
   // Api to add project
   server.post('/api/projects', (req, res) => {
     // Validate input

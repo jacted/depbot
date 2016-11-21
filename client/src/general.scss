@@ -82,6 +82,15 @@ a {
     border-radius: 4px;
     color: #fff;
     border: 1px solid $secondary-color;
+    cursor: pointer;
+    margin-left: 15px;
+    &.delete {
+      background-color: #a94442;
+      border-color: #a94442;
+      &:hover {
+        color: #a94442;
+      }
+    }
     &:hover {
       background: #fff;
       color: $secondary-color;
