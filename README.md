@@ -46,3 +46,9 @@ This project is under development. Things might break or change.
 >You can check out the full license [here](https://github.com/jacted/depbot/blob/master/LICENSE)
 
 This project is licensed under the terms of the **MIT** license.
+
+## Screenshots
+
+![Projects view](https://raw.githubusercontent.com/jacted/depbot/master/screenshots/projects.png "Projects view")
+![Projects create view](https://raw.githubusercontent.com/jacted/depbot/master/screenshots/create-project.png "Projects create view")
+![Project view](https://raw.githubusercontent.com/jacted/depbot/master/screenshots/view-project.png "Project view")
