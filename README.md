@@ -26,15 +26,7 @@ Use the Github issue tracker for any questions, issues or feature suggestions.
 
 ## Roadmap
  
-- [X] Git push webhook deployment
-- [ ] Front-end
-- [ ] Authentication
-- [ ] Add/Delete/Edit projects
-- [ ] Verify FTP credentials on project creation
-- [ ] Deployment via SSH
-- [ ] Slack integration
-- [ ] Refactoring
-- [ ] Gitlab support
+Look Github issue tracker [features](https://github.com/jacted/depbot/issues?q=is%3Aissue+is%3Aopen+label%3Afeature)
 
 ## Warning
 
