@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { getProject, createProject, saveProject } from '../../data/projects'
 
-import './projectemanipulate.scss'
+import './projectcreate.scss'
 
-class ProjectManipulate extends Component {
+class ProjectCreate extends Component {
   constructor (props) {
     super(props)
     this.state = {
@@ -234,4 +234,4 @@ class ProjectManipulate extends Component {
   }
 }
 
-export default ProjectManipulate
+export default ProjectCreate
