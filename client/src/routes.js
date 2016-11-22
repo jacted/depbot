@@ -34,7 +34,7 @@ export default {
     {
       path: '/projects/create',
       getComponent(location, cb) {
-        System.import('./pages/ProjectCreate')
+        System.import('./pages/Project/Create')
           .then(loadRoute(cb))
           .catch(errorLoading)
       }

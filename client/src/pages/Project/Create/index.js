@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import { getProject, createProject, saveProject } from '../../data/projects'
+import { connect } from 'react-redux'
+import { createProject } from '../../../actions/projects'
 
-import './projectcreate.scss'
+import './create.scss'
 
 class ProjectCreate extends Component {
   constructor (props) {
@@ -34,6 +35,7 @@ class ProjectCreate extends Component {
   }
 
   componentDidMount () {
+    console.log(this.props)
   }
 
   backToProjects () {
@@ -43,7 +45,7 @@ class ProjectCreate extends Component {
   createProject (e) {
     e.preventDefault()
     this.setState({ errors: [], isLoading: true })
-    createProject(this.state.project).then((res) => {
+    this.props.createProject(this.state.project).then((res) => {
       this.props.router.push('/project/' + res.data.id)
     }, (err) => {
       if (typeof err.response.data.errors !== 'undefined') {
@@ -234,4 +236,4 @@ class ProjectCreate extends Component {
   }
 }
 
-export default ProjectCreate
+export default connect(null, { createProject })(ProjectCreate)
