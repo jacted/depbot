@@ -31,7 +31,7 @@ class Home extends Component {
     return (
       <div className='box' key={index}>
         <div className='box--content'>
-          <span className='box--content-type'>GIT TO FTP</span>
+          <span className='box--content-type'>{val.type === '1' ? 'FTP' : 'SSH'}</span>
           <h2>{val.name}</h2>
         </div>
         <div className='box--footer'>

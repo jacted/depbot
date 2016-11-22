@@ -10,7 +10,8 @@ module.exports = (server, db) => {
     projects.forEach((val, index) => {
       response.push({
         id: val.id,
-        name: val.name
+        name: val.name,
+        type: val.type
       })
     })
     res.json(response)
