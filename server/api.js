@@ -127,7 +127,7 @@ module.exports = (server, db) => {
     req.asyncValidationErrors().then(() => {
 
       // Validate FTP connection
-      validateFTP(req.body.ftp).then((res) => {
+      validateFTP(req.body.ftp).then(() => {
 
         // Find repo name
         let re = /([^\/]+)\.git$/
@@ -149,7 +149,8 @@ module.exports = (server, db) => {
           name: req.body.name,
           git: req.body.git,
           ftp: req.body.ftp,
-          reponame: foundReponame[1]
+          reponame: foundReponame[1],
+          type: req.body.type
         }).value().id
 
         res.json({

@@ -50,5 +50,6 @@ This project is licensed under the terms of the **MIT** license.
 ## Screenshots
 
 ![Projects view](https://raw.githubusercontent.com/jacted/depbot/master/screenshots/projects.png "Projects view")
-![Projects create view](https://raw.githubusercontent.com/jacted/depbot/master/screenshots/create-project.png "Projects create view")
+![Projects create step 1](https://raw.githubusercontent.com/jacted/depbot/master/screenshots/create-project-step1.png "Projects create step 1")
+![Projects create step 2](https://raw.githubusercontent.com/jacted/depbot/master/screenshots/create-project-step2.png "Projects create step 2")
 ![Project view](https://raw.githubusercontent.com/jacted/depbot/master/screenshots/view-project.png "Project view")
