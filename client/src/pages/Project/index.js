@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import { Link } from 'react-router'
-import { getProject, deleteProject } from '../../data/projects'
+import { getProject, deleteProject } from '../../actions/projects'
 
 import './project.scss'
 
@@ -18,7 +19,7 @@ class Project extends Component {
   }
 
   deleteProject () {
-    deleteProject(this.props.params.projectID).then((res) => {
+    this.props.deleteProject(this.props.params.projectID).then((res) => {
       this.props.router.push('/')
     }, (err) => {
       console.log(err)
@@ -26,17 +27,14 @@ class Project extends Component {
   }
 
   getProject (id) {
-    getProject(id).then((res) => {
-      this.setState({
-        project: res.data
-      })
+    this.props.getProject(id).then((res) => {
     }, (err) => {
       this.props.router.push('/')
     })
   }
 
   renderProjectInformation () {
-    let { project } = this.state
+    let { project } = this.props
     return (
       <div className='box'>
         <div className='box--content'>
@@ -53,7 +51,7 @@ class Project extends Component {
   }
 
   renderProjectInformationFtp () {
-    let { project } = this.state
+    let { project } = this.props
     return (
       <div className='box'>
         <div className='box--content'>
@@ -70,7 +68,7 @@ class Project extends Component {
   }
 
   render () {
-    let { project } = this.state
+    let { project } = this.props
     if (Object.keys(project).length === 0) {
       return <div />
     }
@@ -89,4 +87,10 @@ class Project extends Component {
   }
 }
 
-export default Project
+const mapStateToProps = (state) => {
+  return {
+    project: state.projects.project
+  }
+}
+
+export default connect(mapStateToProps, { getProject, deleteProject })(Project)

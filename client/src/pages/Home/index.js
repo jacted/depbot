@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import { Link } from 'react-router'
-import { getProjects } from '../../data/projects'
+import { getProjects } from '../../actions/projects'
 
 import './home.scss'
 
@@ -14,17 +15,7 @@ class Home extends Component {
   }
 
   componentDidMount () {
-    this.getProjects()
-  }
-
-  getProjects () {
-    getProjects().then((res) => {
-      this.setState({
-        projects: res.data
-      })
-    }, (err) => {
-      console.log(err)
-    })
+    this.props.getProjects()
   }
 
   renderProject (val, index) {
@@ -49,11 +40,17 @@ class Home extends Component {
           <Link to='/projects/create'>Create project</Link>
         </div>
         <div id='content'>
-          {this.state.projects.map(this.renderProject)}
+          {this.props.projects.map(this.renderProject)}
         </div>
       </div>
     )
   }
 }
 
-export default Home
+const mapStateToProps = (state) => {
+  return {
+    projects: state.projects.projects
+  }
+}
+
+export default connect(mapStateToProps, { getProjects })(Home)
