@@ -151,3 +151,30 @@ a {
     border-color: #ebccd1;
   }
 }
+
+/* Form
+****************************************/
+form {
+  .form-group {
+    margin-top: 10px;
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    input {
+      width: 100%;
+      padding: 7px;
+      outline: none;
+      border: 1px solid #ddd;
+    }
+    button {
+      width: 100%;
+      outline: none;
+      cursor: pointer;
+      &:disabled {
+        opacity: 0.65;
+        cursor: initial;
+      }
+    }
+  }
+}

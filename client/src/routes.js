@@ -9,31 +9,27 @@ function loadRoute(cb) {
 }
 
 export default {
-  component: App,
   childRoutes: [
     {
-      path: '/',
-      getComponent(location, cb) {
-        System.import('./pages/Home')
-          .then(loadRoute(cb))
-          .catch(errorLoading)
-      }
-    },
-    {
-      path: '/project/:projectID',
-      getComponent(location, cb) {
-        System.import('./pages/Project')
-          .then(loadRoute(cb))
-          .catch(errorLoading)
-      }
-    },
-    {
-      path: '/project/:projectID/edit',
-      getComponent(location, cb) {
-        System.import('./pages/ProjectManipulate')
-          .then(loadRoute(cb))
-          .catch(errorLoading)
-      }
+      component: App,
+      childRoutes: [
+        {
+          path: '/',
+          getComponent(location, cb) {
+            System.import('./pages/Home')
+              .then(loadRoute(cb))
+              .catch(errorLoading)
+          }
+        },
+        {
+          path: '/project/:projectID',
+          getComponent(location, cb) {
+            System.import('./pages/Project')
+              .then(loadRoute(cb))
+              .catch(errorLoading)
+          }
+        }
+      ]
     },
     {
       path: '/projects/create',

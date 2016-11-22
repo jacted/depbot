@@ -1,38 +1,90 @@
 @import '../../colors';
 
-.projectmanipulate__screen {
-  .box {
-    width: 500px;
-    h2 {
-      margin-bottom: 15px;
+.projectcreate__screen {
+  min-height: 100%;
+  width: 100%;
+  background: #fff;
+  color: #878790;
+  text-align: center;    
+  font-weight: 300;
+  padding: 60px 0px;
+  .back {
+    position: absolute;
+    top: 40px;
+    right: 60px;
+    font-size: 40px;
+    cursor: pointer;
+  }
+  h2 {
+    font-size: 14px;
+  }
+  span.subtitle {
+    display: block;
+    margin-top: 10px;
+    font-size: 32px;
+    margin-bottom: 70px;
+    input {
+      padding: 0px;
+      font-size: 32px;
+      border: 0;
+      text-align: center;
+      color: #878790;  
+      font-weight: 300;
+      outline: none;
+      &:focus {
+        border-bottom: 1px solid #878790;
+      }
     }
-    .form-group {
-      margin-top: 10px;
-      label {
-        display: block;
-        margin-bottom: 10px;
-      }
-      input {
-        width: 100%;
-        outline: none;
-        padding: 6px;
-        font-size: 14px;
-        border: 1px solid #ddd;
-      }
-      button {
+  }
+  ul {
+    li {
+      display: inline-block;
+      width: 300px;
+      padding: 50px 0px;
+      &:hover {
+        box-shadow: 0px 5px 40px #d8d8d8;
         cursor: pointer;
-        outline: none;
-        width: 100%;
+      }
+      &:last-child {
+        margin-left: 20px;
+      }
+      strong {
+        font-weight: bold;
+        display: block;
+        margin-bottom: 30px;
+        font-size: 20px;
+      }
+      div {
+        margin-top: 30px;
+        display: inline-block;
         background: $secondary-color;
         color: #fff;
-        padding: 10px;
-        border: 1px solid $secondary-color;
-        font-size: 14px;
-        &:hover {
-          background: #fff;
-          color: $secondary-color;
-        }
+        border-radius: 25px;
+        padding: 10px 15px;
       }
+    }
+  }
+  .group__wrap {
+    width: 350px;
+    margin: 0px auto;
+    text-align: left;
+    h3 {
+      border-bottom: 1px solid #ddd;
+      margin: 25px 0px 15px;
+      padding-bottom: 5px;
+      font-weight: 400;
+      font-size: 16px;
+    }
+    button {
+      display: block;
+      background: $secondary-color;
+      color: #fff;
+      border: 0px;
+      padding: 7px;
+      border-radius: 25px;
+      font-size: 20px;
+      width: 250px;
+      margin: 70px auto 0px;
     }
   }
 }
