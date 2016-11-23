@@ -5,10 +5,14 @@ Depbot is a deployment tool to help deploying files from GIT to your server.
 ## Installation
 
 1. Git clone project
-2. Add `push webhook` to the repo you want to deploy (Remember to add a secret) - `http://depbotserver.com/git/webhook`
+2. run `npm install` to install dependencies
 3. Edit `config.example.js` and change name to `config.js`
 4. Run `npm run compile`
 5. Run server `npm start`
+6. Navigate to `http://depbotserver.com:1337` and create a project
+7. Add `push webhook` to the repo you want to deploy (Remember to add a secret)
+
+Webhook url: `http://depbotserver.com:1337/git/webhook`
 
 **Webhook content-type has to be application/json**
 
