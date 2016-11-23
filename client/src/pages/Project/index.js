@@ -20,7 +20,7 @@ class Project extends Component {
 
   deleteProject () {
     this.props.deleteProject(this.props.params.projectID).then((res) => {
-      this.props.router.push('/')
+      this.context.router.push('/')
     }, (err) => {
       console.log(err)
     })
@@ -29,7 +29,7 @@ class Project extends Component {
   getProject (id) {
     this.props.getProject(id).then((res) => {
     }, (err) => {
-      this.props.router.push('/')
+      this.context.router.push('/')
     })
   }
 
@@ -85,6 +85,10 @@ class Project extends Component {
       </div>
     )
   }
+}
+
+Project.contextTypes = {
+  router: React.PropTypes.object.isRequired
 }
 
 const mapStateToProps = (state) => {

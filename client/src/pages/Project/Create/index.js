@@ -34,19 +34,15 @@ class ProjectCreate extends Component {
     this.changeProjectType = this.changeProjectType.bind(this)
   }
 
-  componentDidMount () {
-    console.log(this.props)
-  }
-
   backToProjects () {
-    this.props.router.push('/')
+    this.context.router.push('/')
   }
 
   createProject (e) {
     e.preventDefault()
     this.setState({ errors: [], isLoading: true })
     this.props.createProject(this.state.project).then((res) => {
-      this.props.router.push('/project/' + res.data.id)
+      this.context.router.push('/project/' + res.data.id)
     }, (err) => {
       if (typeof err.response.data.errors !== 'undefined') {
         this.setState({
@@ -234,6 +230,10 @@ class ProjectCreate extends Component {
       </div>
     )
   }
+}
+
+ProjectCreate.contextTypes = {
+  router: React.PropTypes.object.isRequired
 }
 
 export default connect(null, { createProject })(ProjectCreate)
