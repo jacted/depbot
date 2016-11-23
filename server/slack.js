@@ -6,6 +6,7 @@ module.exports = {
     let colorCode = (success) ? '#36a64f' : '#ff0000'
     let status = (success) ? 'Success' : 'Failure'
     let data = {
+      icon_emoji: ':robot_face:',
       color: colorCode,
       attachments: [
         {
