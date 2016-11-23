@@ -1,5 +1,6 @@
 const { DeployerJS } = require('deployer-js')
 const config = require('../config')
+const { send } = require('./slack')
 
 module.exports = (server, db) => {
 
@@ -26,8 +27,10 @@ module.exports = (server, db) => {
 
           deployer.deployCommitedFiles(req.body.commits).then((res) => {
             console.log(res)
+            send(project.slack.hook, project.name, true)
           }, (err) => {
             console.log(err)
+            send(project.slack.hook, project.name, false)
           })
 
           res.end('OK - Deploying')
