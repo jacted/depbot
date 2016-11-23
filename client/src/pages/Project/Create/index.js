@@ -162,9 +162,6 @@ class ProjectCreate extends Component {
         type: type
       }
     })
-    setTimeout(() => {
-      console.log(this.state.project.type)
-    }, 50)
   }
 
   renderWizard () {
