@@ -150,7 +150,10 @@ module.exports = (server, db) => {
           git: req.body.git,
           ftp: req.body.ftp,
           reponame: foundReponame[1],
-          type: req.body.type
+          type: req.body.type,
+          slack: {
+            hook: req.body.slack
+          }
         }).value().id
 
         res.json({

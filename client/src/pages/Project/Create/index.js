@@ -23,7 +23,8 @@ class ProjectCreate extends Component {
         git: {
           repo: '',
           branch: 'master'
-        }
+        },
+        slack: ''
       }
     }
     this.createProject = this.createProject.bind(this)
@@ -93,6 +94,18 @@ class ProjectCreate extends Component {
         }
       }
     })
+  }
+
+  renderSlackSection () {
+    return (
+      <div>
+        <h3>Slack</h3>
+        <div className='form-group'>
+          <label>Incoming webhook</label>
+          <input type='text' name='slack' autoComplete='off' onChange={this.inputChange} />
+        </div>
+      </div>
+    )
   }
 
   renderGitSection () {
@@ -177,6 +190,7 @@ class ProjectCreate extends Component {
               <input placeholder='Project name' type='text' name='name' value={this.state.project.name} onChange={this.inputChange} autoComplete='off' />
             </span>
             {this.renderErrors()}
+            {this.renderSlackSection()}
             {this.renderGitSection()}
             {this.renderFtpSection()}
             <div className='form-group'>
