@@ -30,12 +30,7 @@ module.exports = (server, db) => {
       project.ftp.password = ''
     }
     // Response
-    res.json({
-      id: req.params.projectID,
-      name: project.name,
-      git: project.git,
-      ftp: project.ftp
-    })
+    res.json(project)
   })
 
   // Api to save a single project

@@ -11,6 +11,22 @@ function loadRoute(cb) {
 export default {
   childRoutes: [
     {
+      path: '/projects/create',
+      getComponent(location, cb) {
+        System.import('./pages/Project/Manipulate')
+          .then(loadRoute(cb))
+          .catch(errorLoading)
+      }
+    },
+    {
+      path: '/projects/:projectID/edit',
+      getComponent(location, cb) {
+        System.import('./pages/Project/Manipulate')
+          .then(loadRoute(cb))
+          .catch(errorLoading)
+      }
+    },
+    {
       component: App,
       childRoutes: [
         {
@@ -22,7 +38,7 @@ export default {
           }
         },
         {
-          path: '/project/:projectID',
+          path: '/projects/:projectID',
           getComponent(location, cb) {
             System.import('./pages/Project')
               .then(loadRoute(cb))
@@ -30,14 +46,6 @@ export default {
           }
         }
       ]
-    },
-    {
-      path: '/projects/create',
-      getComponent(location, cb) {
-        System.import('./pages/Project/Create')
-          .then(loadRoute(cb))
-          .catch(errorLoading)
-      }
     }
   ]
-};
+}
