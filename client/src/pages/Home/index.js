@@ -26,7 +26,7 @@ class Home extends Component {
           <h2>{val.name}</h2>
         </div>
         <div className='box--footer'>
-          <Link to={'/project/' + val.id}>View project</Link>
+          <Link to={'/projects/' + val.id}>View project</Link>
         </div>
       </div>
     )

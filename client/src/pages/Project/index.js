@@ -77,6 +77,7 @@ class Project extends Component {
         <div id='subheader' className='clearfix'>
           <h1>Project: {project.name}</h1>
           <a className='delete' onClick={this.deleteProject}>Delete</a>
+          <Link to={'/projects/' + project.id + '/edit'}>Edit project</Link>
         </div>
         <div id='content'>
           {this.renderProjectInformation()}
